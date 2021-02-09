@@ -20,6 +20,13 @@ object HelloWorld {
   }
 
   def forTest2() = {
+    // array为同质、数据可变、长度不可变的集合
+    // 同质 = array中的元素数据类型相同，若不同则array类型为一个超类，any类型
+    val arr1 = Array(12, "12")
+    for (i <- arr1)
+      println(i)
+    println("arr1的类型为：", arr1.getClass.getSimpleName)
+
     val arr = List(1, 4, "3333", 13, 4234)
     for (i <- arr) {
       println(i)
@@ -28,32 +35,25 @@ object HelloWorld {
 
   def forTest3() = {
     val arr = List(1, 4, "3333", 13, 4234)
-    for (i <- arr
-         if i.isInstanceOf[Int]) {
-      println(i)
-    }
+    for (i <- arr if i.isInstanceOf[Int]){
+      // 是否为Int的一个实例，判断对象是否属于某个给定的类
+      // asInstanceOf可以将引用转换为子类的引用
+      println("输出Int类型的数据：",i)
+         }
   }
 
   def forTest4() = {
     var x = 0
     val arr = List(1, 4, 3, 4, 1.1, 156, 156, 4816, 812, 12, 151, 2, 1112, 15, 1, 2, 1, 51, 32, 15, 64, 9, 2, 1, 321, 5, 15, 4234)
-    var retVal = for {x <- arr
-                      if x < 12
-                      } yield x
-
+    // yield 记住每次迭代中的有关值，并逐一存入到一个数组中
+    var retVal = for { x <- arr if x < 12 } yield x // 取出arr中 <12 的值，并存在数组中
     for (a <- retVal) {
-      println(a)
+      println("retVal中的值为：",a)
     }
   }
 
-  def m(x: Int) = {
-    x + 2
-  }
-
-
   /**
    * 可变参数
-   *
    * @param n
    * @param xs
    */
@@ -66,7 +66,6 @@ object HelloWorld {
 
   /**
    * 可指定参数   fun2(b=1,a=33)
-   *
    * @param a
    * @param b
    */
@@ -191,7 +190,7 @@ object HelloWorld {
 
   def main(args: Array[String]): Unit = {
     // 主方法测试
-    forTest2()
+    forTest4()
 
     val pattern = "\\d".r
     val str = "juhsu1938234jsidj"
