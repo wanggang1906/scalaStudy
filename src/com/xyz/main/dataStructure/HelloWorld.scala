@@ -6,7 +6,15 @@ import scala.Array.ofDim
 /**
  * 笔记
  * Object可以直接在main方法中访问
+ * 构造器
  * */
+class myClass(name:String,age:String){
+  // 重写构造器
+
+  // class中的main方法是一个普通放啊，
+  // 静态方法属于类
+
+}
 object HelloWorld {
 
   // 方法名(参数): 方法返回类型
@@ -58,25 +66,15 @@ object HelloWorld {
    * @param xs
    */
   def fun1(n: Int, xs: Int*) = {
-    println(n)
+    println("可直接赋值的参数：",n,"\n")
+    println("可迭代对象为：\n")
     for (i <- xs) {
       println(i)
     }
   }
 
   /**
-   * 可指定参数   fun2(b=1,a=33)
-   * @param a
-   * @param b
-   */
-  def fun2(a: Int, b: Int): Unit = {
-    println(a)
-    println(b)
-  }
-
-  /**
    * 递归
-   *
    * @param n
    * @return
    */
@@ -190,7 +188,11 @@ object HelloWorld {
 
   def main(args: Array[String]): Unit = {
     // 主方法测试
-    forTest4()
+    // forTest4()
+
+    // seq
+    var seq:Seq[Int] = Seq(1,3,4,2,0)
+    fun1(n=2,xs = seq)
 
     val pattern = "\\d".r
     val str = "juhsu1938234jsidj"
